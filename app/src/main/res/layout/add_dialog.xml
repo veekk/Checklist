@@ -41,13 +41,11 @@
             android:hint="Date"
             android:editable="false"
             android:layout_below="@+id/taskDesc"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="16dp"
             android:focusableInTouchMode="false"
             android:layout_alignLeft="@+id/taskDesc"
             android:layout_alignStart="@+id/taskDesc"
-            android:layout_toLeftOf="@+id/imageAttached"
-            android:layout_toStartOf="@+id/imageAttached" />
+            android:layout_alignRight="@+id/taskDesc" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -64,26 +62,6 @@
             android:layout_marginTop="16dp"
             android:layout_alignRight="@+id/date"
             android:layout_alignEnd="@+id/date" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Load Image"
-            android:id="@+id/loadImageButton"
-            android:layout_below="@+id/date"
-            android:layout_alignRight="@+id/taskDesc"
-            android:layout_alignEnd="@+id/taskDesc" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageAttached"
-            android:layout_alignRight="@+id/loadImageButton"
-            android:layout_alignEnd="@+id/loadImageButton"
-            android:layout_alignTop="@+id/date"
-            android:layout_alignLeft="@+id/loadImageButton"
-            android:layout_alignStart="@+id/loadImageButton"
-            android:layout_above="@+id/loadImageButton" />
 
     </RelativeLayout>
 </ScrollView>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.albiorix.veek.keepsolidchecklist.R;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class ElementListAdapter extends BaseAdapter {
@@ -61,14 +63,13 @@ public class ElementListAdapter extends BaseAdapter {
 
         ElementListModel em = getElementListModel(position);
 
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        Bitmap bitmap = BitmapFactory.decodeFile(em.bmp_path, options);
+        //Uri uriFromPath;
+        //uriFromPath = Uri.parse(em.bmp_path);
 
         ((CheckBox) view.findViewById(R.id.cbTask)).setText(em.name);
         ((TextView) view.findViewById(R.id.tvTaskDate)).setText(em.date);
         ((TextView) view.findViewById(R.id.tvTaskDesc)).setText(em.desc);
-        ((ImageView) view.findViewById(R.id.imgView)).setImageBitmap(bitmap);;
+        //((ImageView) view.findViewById(R.id.imgView)).setImageURI(uriFromPath);;
 
         return  view;
     }

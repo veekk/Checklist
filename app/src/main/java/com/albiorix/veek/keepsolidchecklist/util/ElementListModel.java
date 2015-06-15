@@ -12,11 +12,11 @@ public class ElementListModel {
     public String bmp_path;
 
 
-    public ElementListModel(String _name, String _date, String _desc, String _bmp){
+    public ElementListModel(String _name, String _date, String _desc){
         name = _name;
         date = _date;
         desc = _desc;
-        bmp_path = _bmp;
+       // bmp_path = _bmp;
 
     }
 }
