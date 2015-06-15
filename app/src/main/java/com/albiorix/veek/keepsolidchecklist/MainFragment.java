@@ -2,10 +2,7 @@ package com.albiorix.veek.keepsolidchecklist;
 
 
 
-/*BitmapFactory.Options options = new BitmapFactory.Options();
-options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        Bitmap bitmap = BitmapFactory.decodeFile(photoPath, options);
-        selected_photo.setImageBitmap(bitmap);*/
+
 
 
 import android.app.AlarmManager;
@@ -22,6 +19,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -63,11 +61,9 @@ public class MainFragment extends Fragment {
     ImageButton FAB;
     EditText date;
     EditText time;
-    EditText priority;
     EditText description;
     Button loadImageButton;
     ImageView imagePreview;
-    ImageView imageTask;
 
     BitmapFactory.Options options = new BitmapFactory.Options();
 
@@ -84,16 +80,10 @@ public class MainFragment extends Fragment {
     SimpleDateFormat currentDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     Calendar calendar = Calendar.getInstance();
- //   int myYear = calendar.get(Calendar.YEAR);
- //   int myMonth = calendar.get(Calendar.MONTH);
- //   int myDay = calendar.get(Calendar.DAY_OF_MONTH);
- //   int myHour = calendar.get(Calendar.HOUR_OF_DAY);
- //   int myMin = calendar.get(Calendar.MINUTE);
 
     String login;
     String name;
     String filePath;
-    Uri uriri;
     View rootView;
     View dialogView;
 
@@ -299,7 +289,7 @@ public class MainFragment extends Fragment {
                                         preferenceManager.putString("listview_" + i, ell.name);
                                         preferenceManager.putString("listview_date_" + i, ell.date);
                                         preferenceManager.putString("listview_desc_" + i, ell.desc);
-                                        preferenceManager.putString("listview_img_" + i, ell.uri.toString());
+                                        preferenceManager.putString("listview_img_" + i, ell.bmp_path);
 
                                     }
                                     adapter.notifyDataSetChanged();
@@ -372,7 +362,7 @@ public class MainFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         setAlarm(taskName.getText().toString(), dateFormat.format(calendar.getTime()));
-                        tasks.add(new ElementListModel(taskName.getText().toString(), dateFormat.format(calendar.getTime()) , description.getText().toString(), imagePreview.setImageBitmap(bmp);));
+                        tasks.add(new ElementListModel(taskName.getText().toString(), dateFormat.format(calendar.getTime()) , description.getText().toString(), filePath));
                         adapter.notifyDataSetChanged();
                         preferenceManager.init(getActivity().getApplicationContext(), "GlobalPreferences");
                         login = preferenceManager.getString("LastLogin");
@@ -383,7 +373,7 @@ public class MainFragment extends Fragment {
                             preferenceManager.putString("listview_" + i, ell.name);
                             preferenceManager.putString("listview_date_" + i, ell.date);
                             preferenceManager.putString("listview_desc_" + i, ell.desc);
-                            preferenceManager.putString("listview_img_" + i, ell.uri.toString());
+                            preferenceManager.putString("listview_img_" + i, ell.bmp_path);
                         }
 
 
@@ -413,7 +403,7 @@ public class MainFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
-                        }
+                    }
                 });
 
         builder.show();
@@ -455,7 +445,7 @@ public class MainFragment extends Fragment {
     }
 
 
-    @Override
+  @Override
   //  public void onActivityResult(int requestCode, int resultCode, Intent data)
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         {
@@ -494,7 +484,11 @@ public class MainFragment extends Fragment {
                             filePath = cursor.getString(0);
                             cursor.close();
                             bmp = selectedImage;
-                            imagePreview.setImageBitmap(selectedImage);
+                            imagePreview.setImageBitmap(bmp);
+                            imagePreview.setImageURI(imageUri);;
+                            cursor.moveToFirst();
+                            String filePath = cursor.getString();
+                            cursor.close();
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -503,6 +497,9 @@ public class MainFragment extends Fragment {
 
         }
     }
+
+
+
 
     public void setAlarm(String nTitle, String nDate) {
         Date date_notif = null;

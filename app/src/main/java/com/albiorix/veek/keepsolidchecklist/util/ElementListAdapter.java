@@ -1,6 +1,8 @@
 package com.albiorix.veek.keepsolidchecklist.util;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,12 +57,18 @@ public class ElementListAdapter extends BaseAdapter {
             view = lInflater.inflate(R.layout.element_list, parent, false);
         }
 
+
+
         ElementListModel em = getElementListModel(position);
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        Bitmap bitmap = BitmapFactory.decodeFile(em.bmp_path, options);
 
         ((CheckBox) view.findViewById(R.id.cbTask)).setText(em.name);
         ((TextView) view.findViewById(R.id.tvTaskDate)).setText(em.date);
         ((TextView) view.findViewById(R.id.tvTaskDesc)).setText(em.desc);
-        ((ImageView) view.findViewById(R.id.imgView)).setImageURI(em.uri);
+        ((ImageView) view.findViewById(R.id.imgView)).setImageBitmap(bitmap);;
 
         return  view;
     }

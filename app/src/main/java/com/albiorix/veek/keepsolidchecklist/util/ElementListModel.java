@@ -9,10 +9,10 @@ public class ElementListModel {
     public String name;
     public String date;
     public String desc;
-    public Bitmap bmp_path;
+    public String bmp_path;
 
 
-    public ElementListModel(String _name, String _date, String _desc, Bitmap _bmp){
+    public ElementListModel(String _name, String _date, String _desc, String _bmp){
         name = _name;
         date = _date;
         desc = _desc;
