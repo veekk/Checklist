@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">KeepSolid Checklist</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_manual">ManualActivity</string>
+    <string name="title_activity_pre_app">PreAppActivity</string>
+    <string name="title_activity_checklist">ChecklistActivity</string>
+    <string name="title_activity_authorization">AuthorizationActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_scroll">ScrollActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+</resources>
