@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="300dp">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskName"
+            android:hint="Task name"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskDesc"
+            android:layout_below="@+id/taskName"
+            android:layout_marginTop="16dp"
+            android:hint="Title description"
+            android:layout_alignLeft="@+id/taskName"
+            android:layout_alignStart="@+id/taskName"
+            android:layout_alignRight="@+id/taskName"
+            android:layout_alignEnd="@+id/taskName" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/date"
+            android:hint="Date"
+            android:editable="false"
+            android:layout_below="@+id/taskDesc"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="16dp"
+            android:focusableInTouchMode="false"
+            android:layout_alignLeft="@+id/taskDesc"
+            android:layout_alignStart="@+id/taskDesc"
+            android:layout_toLeftOf="@+id/imageAttached"
+            android:layout_toStartOf="@+id/imageAttached" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:ems="10"
+            android:id="@+id/time"
+            android:hint="Time"
+            android:editable="false"
+            android:focusableInTouchMode="false"
+            android:layout_below="@+id/date"
+            android:layout_alignLeft="@+id/date"
+            android:layout_alignStart="@+id/date"
+            android:layout_marginTop="16dp"
+            android:layout_alignRight="@+id/date"
+            android:layout_alignEnd="@+id/date" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load Image"
+            android:id="@+id/loadImageButton"
+            android:layout_below="@+id/date"
+            android:layout_alignRight="@+id/taskDesc"
+            android:layout_alignEnd="@+id/taskDesc" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageAttached"
+            android:layout_alignRight="@+id/loadImageButton"
+            android:layout_alignEnd="@+id/loadImageButton"
+            android:layout_alignTop="@+id/date"
+            android:layout_alignLeft="@+id/loadImageButton"
+            android:layout_alignStart="@+id/loadImageButton"
+            android:layout_above="@+id/loadImageButton" />
+
+    </RelativeLayout>
+</ScrollView>
